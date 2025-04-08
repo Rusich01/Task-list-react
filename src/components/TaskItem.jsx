@@ -1,11 +1,13 @@
-const TaskItem = ({ list, deleteTask, addCompletedTasks }) => {
+const TaskItem = ({ list, deleteTask, addCompletedTasks, isOverdue }) => {
   const { title, priority, deadline, completed, id } = list;
   return (
-    <li className={`task-item ${priority.toLowerCase()}`}>
+    <li
+      className={`task-item ${priority.toLowerCase()} ${
+        isOverdue ? "overdue" : ""
+      }`}
+    >
       <div className="task-info">
-        <div>
-          {title} <strong>{priority}</strong>
-        </div>
+        <div>{title}</div>
         <div className="task-deadline">Due: {deadline}</div>
       </div>
 

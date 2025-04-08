@@ -1,6 +1,11 @@
 import TaskItem from "../TaskItem";
 
-const TaskList = ({ activeTasks, deleteTask, addCompletedTasks }) => {
+const TaskList = ({
+  activeTasks,
+  deleteTask,
+  addCompletedTasks,
+  currentTime,
+}) => {
   return (
     <ul className="task-list">
       {activeTasks.map((list, index) => (
@@ -9,6 +14,7 @@ const TaskList = ({ activeTasks, deleteTask, addCompletedTasks }) => {
           deleteTask={deleteTask}
           key={index}
           list={list}
+          isOverdue={new Date(list.deadline) < currentTime}
         />
       ))}
     </ul>

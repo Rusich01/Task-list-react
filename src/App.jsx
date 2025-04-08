@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TaskForms from "./components/SectionOne/TaskForms";
 import Tasks from "./components/SectionTwo/Tasks";
 import Complete from "./components/SectionThree/Complete";
@@ -21,6 +21,15 @@ function App() {
       }
     });
   };
+
+  // Дедлайн задачи
+  const [currentTime, setCurrentTime] = useState(new Date());
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   const toggleSortOrder = (type) => {
     if (sortType === type) {
@@ -81,6 +90,7 @@ function App() {
         addCompletedTasks={addCompletedTasks}
         toggleSortOrder={toggleSortOrder}
         sortType={sortType}
+        currentTime={currentTime}
       />
       <Complete
         toggleSection={toggleSection}

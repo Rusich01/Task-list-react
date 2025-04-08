@@ -7,6 +7,7 @@ const Tasks = ({
   addCompletedTasks,
   toggleSortOrder,
   sortType,
+  currentTime,
 }) => {
   return (
     <div className="task-container">
@@ -39,6 +40,7 @@ const Tasks = ({
             activeTasks={activeTasks}
             deleteTask={deleteTask}
             addCompletedTasks={addCompletedTasks}
+            currentTime={currentTime}
           />
         </>
       )}
